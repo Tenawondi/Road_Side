@@ -21,11 +21,11 @@ class GarageRepository implements IGarageRepository {
     return _garageProvider.getGarages();
   }
 
-  Future<void> updateGarage(Garage garage) async {
-    await _garageProvider.updateGarage(garage);
-  }
+  @override
+  Future<Garage> updateGarage(Garage garage) async =>
+      await _garageProvider.updateGarage(garage);
 
-  Future<void> deleteUser(String id) async {
-    await _garageProvider.deleteGarage(id);
-  }
+  @override
+  Future<Garage> deleteGarage(String id) async =>
+      await _garageProvider.deleteGarage(id);
 }
