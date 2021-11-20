@@ -14,9 +14,9 @@ import '../main_screen/main_screen.dart' as _i10;
 import '../ongoing_services/ongoing_services.dart' as _i12;
 import '../order_page/order_page.dart' as _i11;
 import '../profile/profile_screen.dart' as _i7;
-import '../register/register_page.dart' as _i5;
+import '../register/register.dart' as _i5;
 import '../setting/setting_screen.dart' as _i6;
-import '../sign_in/sign_in_page.dart' as _i4;
+import '../sign_in/signin.dart' as _i4;
 import '../splash/splash_page.dart' as _i3;
 
 class RootRouter extends _i1.RootStackRouter {
@@ -33,12 +33,12 @@ class RootRouter extends _i1.RootStackRouter {
     SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i4.SignInPage();
+          return _i4.SignInPage();
         }),
     RegisterPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i5.RegisterPage();
+          return _i5.SignUp();
         }),
     SettingsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,

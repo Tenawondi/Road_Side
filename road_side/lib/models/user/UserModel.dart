@@ -5,14 +5,14 @@ part 'UserModel.g.dart';
 @JsonSerializable()
 class User {
   String? Id;
-  String FirstName;
-  String LastName;
-  String Username;
-  String EmailAddress; //TODO - Check for EmailAddress and json endpoint
-  String PhoneNumber;
+  String? FirstName;
+  String? LastName;
+  String? Username;
+  String? EmailAddress; //TODO - Check for EmailAddress and json endpoint
+  String? PhoneNumber;
   String? ProfilePicture;
-  String Role;
-  String Password;
+  String? Role;
+  String? Password;
   List? OrderHistory;
   List? OngoingServices;
   List? Favorites;
@@ -22,14 +22,14 @@ class User {
 
   User({
     this.Id,
-    required this.FirstName,
-    required this.LastName,
-    required this.Username,
-    required this.EmailAddress,
-    required this.PhoneNumber,
+    this.FirstName,
+    this.LastName,
+    this.Username,
+    this.EmailAddress,
+    this.PhoneNumber,
     this.ProfilePicture,
-    required this.Role,
-    required this.Password,
+    this.Role,
+    this.Password,
     this.OrderHistory,
     this.OngoingServices,
     this.Favorites,

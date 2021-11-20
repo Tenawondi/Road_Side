@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:road_side/application/auth/auth_bloc.dart';
-import 'package:road_side/application/auth/register_form/register_form_bloc.dart';
-import 'package:road_side/application/auth/sign_in_form/sign_in_form_bloc.dart';
+
 import 'package:road_side/application/home_page/home_bloc.dart';
 import 'package:road_side/application/main_screen/main_screen_bloc.dart';
 import 'package:road_side/application/order_page/order_page_bloc.dart';
@@ -40,11 +38,10 @@ class AppWidget extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuthBloc(_authFacade)),
-        BlocProvider(create: (context) => SignInFormBloc(_authFacade)),
-        BlocProvider(create: (context) => RegisterFormBloc(_authFacade)),
-        BlocProvider(create: (context) => AuthBloc(_authFacade)),
-        BlocProvider(create: (context) => HomeBloc(garageRepository: garageRepository, serviceRepository: serviceRepository)),
+        BlocProvider(
+            create: (context) => HomeBloc(
+                garageRepository: garageRepository,
+                serviceRepository: serviceRepository)),
         BlocProvider(
             create: (context) =>
                 MainScreenBloc(garageRepository: garageRepository)),

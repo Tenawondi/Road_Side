@@ -32,7 +32,6 @@ class _SignInPageState extends State<SignInPage> {
     //     UserLogin(User(email: "henockyeyoni@gmail.com", password: "094100"));
     // //print("Workinfffffggggggggggggggggggggggggggggggggg");
     // BlocProvider.of<UserBloc>(ctx).add(loginevent);
-    print("Workinfffffggggggggggggggggggggggggggggggggg");
   }
 
   @override
