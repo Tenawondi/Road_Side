@@ -10,8 +10,7 @@ class GarageApiProvider implements IGarageProvider {
   String _baseUrl = Constants.baseUrl;
   SharedPreferences? userSession;
 
-
-  GarageApiProvider(this._client){
+  GarageApiProvider(this._client) {
     sharedPreference();
   }
 
@@ -33,14 +32,35 @@ class GarageApiProvider implements IGarageProvider {
       Map<String, dynamic> responseList = json.decode(response.body);
       List<dynamic> garageList = responseList["garages"];
 
-      garages = List<Garage>.from(garageList.map((model) => Garage.fromJson(model)));
-
-    } catch (e){
+      garages =
+          List<Garage>.from(garageList.map((model) => Garage.fromJson(model)));
+    } catch (e) {
       print(e);
     }
     return garages;
   }
 
+  Future<Garage> createGarage(Garage garage) async {
+    final response = await http.post(
+      Uri.parse(_baseUrl + "garages"),
+      headers: <String, String>{'Content-Type': 'application/json'},
+      body: json.encode({
+        'name': garage.Name,
+        'username': garage.Username,
+        'reviews': garage.Reviews,
+        'contactnumbers': garage.ContactNumbers,
+        'availableServices': garage.AvailableServices,
+        'image': garage.ImageUrl,
+        'incomingrequests': garage.IncomingRequests,
+        'workinghours': garage.WorkingHours
+      }),
+    );
+    if (response.statusCode == 200) {
+      return Garage.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to create garage');
+    }
+  }
 
   Garage parseResponse(http.Response response) {
     final responseString = jsonDecode(response.body);
