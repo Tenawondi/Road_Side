@@ -17,4 +17,12 @@ class OrderRepository implements IOrderRepository {
   Future<Order> acceptOrder(Order order) {
     return orderProvider.acceptOrder(order);
   }
+
+  @override
+  Future<Order> updateOrder(Order order) async =>
+      await orderProvider.updateOrder(order);
+
+  @override
+  Future<Order> deleteOrder(String id) async =>
+      await orderProvider.deleteOrder(id);
 }

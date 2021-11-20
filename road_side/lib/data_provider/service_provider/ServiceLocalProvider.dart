@@ -3,13 +3,13 @@ import 'package:road_side/data_provider/local_database/database.dart';
 import 'package:road_side/data_provider/service_provider/IServiceProvider.dart';
 import 'package:road_side/models/service/ServiceModel.dart';
 
-class ServiceLocalProvider implements IServiceProvider{
+class ServiceLocalProvider implements IServiceProvider {
   final dbProvider = DatabaseProvider.dbProvider;
   @override
-
   Future<Service> getService(String serviceId) async {
     final db = await dbProvider.database;
-    var result = await db.query("Service", where: "id = ?", whereArgs: [serviceId]);
+    var result =
+        await db.query("Service", where: "id = ?", whereArgs: [serviceId]);
 
     return Service.fromJson(result.first);
   }
@@ -19,9 +19,27 @@ class ServiceLocalProvider implements IServiceProvider{
     final db = await dbProvider.database;
     var result = await db.query("Service");
 
-
-    List<Service> services = result.isNotEmpty ? result.map((service) => Service.fromJson(service)).toList() : [];
+    List<Service> services = result.isNotEmpty
+        ? result.map((service) => Service.fromJson(service)).toList()
+        : [];
     return services;
   }
 
+  @override
+  Future<Service> addService(Service service) {
+    // TODO: implement addService
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Service> deleteService(String id) {
+    // TODO: implement deleteService
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Service> updateService(Service service) {
+    // TODO: implement updateService
+    throw UnimplementedError();
+  }
 }
