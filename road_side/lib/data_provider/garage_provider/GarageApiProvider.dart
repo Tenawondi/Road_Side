@@ -56,7 +56,46 @@ class GarageApiProvider implements IGarageProvider {
       }),
     );
     if (response.statusCode == 200) {
-      return Garage.fromJson(jsonDecode(response.body));
+      return parseResponse(response);
+    } else {
+      throw Exception('Failed to create garage');
+    }
+  }
+
+  Future<Garage> deleteGarage(String id) async {
+    final http.Response response = await http.delete(
+      Uri.parse(_baseUrl + id),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      return parseResponse(response);
+    } else {
+      throw Exception('Failed to create garage');
+    }
+  }
+
+  Future<Garage> updateGarage(Garage garage) async {
+    final http.Response response = await http.put(
+      Uri.parse(_baseUrl + garage.Id),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'name': garage.Name,
+        'username': garage.Username,
+        'reviews': garage.Reviews,
+        'contactnumbers': garage.ContactNumbers,
+        'availableServices': garage.AvailableServices,
+        'image': garage.ImageUrl,
+        'incomingrequests': garage.IncomingRequests,
+        'workinghours': garage.WorkingHours
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      return parseResponse(response);
     } else {
       throw Exception('Failed to create garage');
     }
