@@ -16,4 +16,15 @@ class ServiceRepository implements IServiceRepository {
   Future<List<Service>> getServices() {
     return _serviceProvider.getServices();
   }
+
+   @override
+  Future<Service> addService(Service service) async =>
+      await _serviceProvider.updateService(service);
+    @override
+  Future<Service> updateService(Service service) async =>
+      await _serviceProvider.updateService(service);
+
+  @override
+  Future<Service> deleteService(String id) async =>
+      await _serviceProvider.deleteService(id);
 }

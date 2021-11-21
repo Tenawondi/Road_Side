@@ -59,13 +59,12 @@ class ServiceApiProvider implements IServiceProvider {
   @override
   Future<Service> updateService(Service service) async {
     final http.Response response = await http.put(
-      Uri.parse(_baseUrl + service.Name),
+      Uri.parse(_baseUrl + service.name),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },
       body: jsonEncode(<String, dynamic>{
-        'location_name': service.Name,
-        'garage_available': service.GaragesAvailable
+        'name': service.name,
       }),
     );
 

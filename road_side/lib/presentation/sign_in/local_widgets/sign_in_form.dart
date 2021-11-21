@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:road_side/application/auth/users/user_bloc.dart';
+import 'package:road_side/application/auth/users/user_event.dart';
 import 'package:road_side/domain/auth/value_objects.dart';
+import 'package:road_side/models/user/UserModel.dart';
 import 'package:road_side/presentation/core/ourContainer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:road_side/presentation/routes/router.gr.dart';
@@ -57,10 +60,10 @@ class SignInForm extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<SignInFormBloc>().add(
-                      SignInWithUsernameAndPasswordPressed(
-                          username: this.username, password: this.password),
-                    );
+                context.read<UserBloc>().add(
+                      UserLogin(User(
+                          EmailAddress: this.username, Password: this.password),
+                    ));
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 90),

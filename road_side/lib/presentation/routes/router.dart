@@ -14,7 +14,7 @@ import 'package:road_side/presentation/order_page/order_page.dart';
   routes: <AutoRoute>[
     MaterialRoute(page: SplashPage),
     MaterialRoute(page: SignInPage),
-    MaterialRoute(page: RegisterPage),
+    MaterialRoute(page: SignUp),
     MaterialRoute(page: SettingsPage),
     MaterialRoute(page: EditProfilePage),
     MaterialRoute(page: Home),
